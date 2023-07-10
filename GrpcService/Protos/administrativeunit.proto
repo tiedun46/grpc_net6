@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+import "google/protobuf/empty.proto";
+
+package administrativeunit;
+
+service AdministrativeUnit {
+  rpc GetList (google.protobuf.Empty) returns (AdministrativeUnitList);
+  rpc GetByID (AdministrativeUnitID) returns (AdministrativeUnitsModel);
+}
+
+message AdministrativeUnitList{
+   repeated AdministrativeUnitsModel administrativeunits = 1;
+}
+
+message AdministrativeUnitsModel {
+      string Oid = 1;
+      string MaTinh= 2;
+      string MaHuyen= 3;
+      string MaXa= 4;
+      string MaThon= 5;
+      string Ten= 6;
+      int32 Cap= 7;
+      string MaVung= 8;
+      int32 SoLuong= 9;
+      string MaDonVi= 10;
+      string MaDonViCha= 11;
+      string IDDonViCha= 12;
+      string dInputDate= 13;
+      string dValidUntilDate= 14;
+      int32 HuyenDao= 15;
+      int32 HuyenNgheo= 16;
+      string MachineID= 17;
+      string MaVungKinhTeTrongDiem= 18;
+      int32 OptimisticLockField= 19;
+      int32 PhanLoaiHuyen= 20;
+      int32 PhanLoaiXa= 21;
+      bool Thieu= 22;
+      int32 ThonDacBietKhoKhan= 23;
+      int32 XaBaiNgang= 24;
+      int32 XaBienGioi= 25;
+      int32 XaDao= 26;
+      int32 XaMienNuiKV1= 27;
+      int32 XaMienNuiKV2= 28;
+      int32 XaMienNuiKV3= 29;
+}
+
+message AdministrativeUnitID {
+    string Oid = 1;
+}
+
+message AdministrativeUnitResponse {
+  int32 StatusCode = 1;
+  string Message = 2;
+  bool IsSuccess = 3;
+}
+

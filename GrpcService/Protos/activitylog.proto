@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+import "google/protobuf/timestamp.proto";
+
+package activitylog;
+
+service ActivityLog {
+  rpc Insert (ActivityLogModel) returns (ActivityLogResponse);
+}
+
+message ActivityLogModel {
+string Oid = 1;
+google.protobuf.Timestamp dInputDate = 2;
+string LogType = 3;
+string LogAction = 4;
+int32 LogValue = 5;
+string LogDescription = 6;
+string Meta_IPAddress = 7;
+string Meta_LicenseID = 8;
+}
+
+message ActivityLogResponse {
+  int32 StatusCode = 1;
+  string message = 2;
+  bool IsSuccess = 3;
+}
